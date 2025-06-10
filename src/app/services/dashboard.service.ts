@@ -25,8 +25,8 @@ export class DashboardService {
       content: ViewsComponent,
       rows: 1,
       columns: 1,
-      background: '#003f5c',
-      color: 'whitesmoke'
+      background: 'whitesmoke',
+      color: 'black'
     },
     {
       id: 3,

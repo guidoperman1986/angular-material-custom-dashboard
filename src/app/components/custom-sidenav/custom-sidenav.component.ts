@@ -29,6 +29,11 @@ export class CustomSidenavComponent {
       route: 'dashboard',
     },
     {
+      icon: 'event',
+      label: 'Calendar Events',
+      route: '/calendar',
+    },
+    {
       icon: 'settings',
       label: 'Settings',
       route: 'settings',
@@ -40,7 +45,7 @@ export class CustomSidenavComponent {
         },
       ],
     },
-    {
+    /* {
       icon: 'featured_play_list',
       label: 'Features',
       route: '',
@@ -49,12 +54,7 @@ export class CustomSidenavComponent {
           icon: 'image',
           label: 'Image Upload',
           route: '/image-upload',
-        },
-        {
-          icon: 'event',
-          label: 'Calendar Events',
-          route: '/calendar',
-        },
+        },  
         {
           icon: 'chat',
           label: 'Chat',
@@ -66,12 +66,12 @@ export class CustomSidenavComponent {
           route: '/csvtojson',
         },
       ]
-    }
+    } */
   ]);
 
   profilePicSize = computed(() => (this.sidenavCollapsed() ? '32' : '100'));
 
   getProfilePic() {
-    return 'https://picsum.photos/200/300';
+    return 'https://avatars.githubusercontent.com/u/38866056?v=4';
   }
 }
