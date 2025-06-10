@@ -21,8 +21,17 @@
     </mat-menu>
 </div>
 
-<div #dashboard class="dashboard-widgets">
+<div 
+    #dashboard 
+    class="dashboard-widgets" 
+    cdkDropListOrientation="mixed"
+    cdkDropListGroup    
+>
     @for (widget of store.addedWidgets(); track widget.id) {
-        <app-widget [data]="widget"></app-widget>
+        <app-widget 
+            [data]="widget" 
+            cdkDropList (cdkDropListDropped)="onDrop($event)" 
+            [cdkDropListData]="widget.id"
+        ></app-widget>
     }
 </div>

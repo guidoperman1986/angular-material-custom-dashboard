@@ -8,11 +8,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { wrapGrid } from 'animate-css-grid';
+import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatGridListModule, MatCardModule, WidgetComponent, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    MatGridListModule,
+    MatCardModule,
+    WidgetComponent,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,    
+    CdkDropList,
+    CdkDropListGroup
+  ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   providers: [DashboardService]
@@ -26,5 +37,14 @@ export class DashboardComponent implements OnInit {
     wrapGrid(this.dashboard().nativeElement, {
       duration: 300
     });
+  }
+
+  onDrop(event: CdkDragDrop<number, any>) {
+
+    const {previousContainer, container} = event;
+
+    this.store.updateWidgetPosition(previousContainer.data, container.data);
+    
+    
   }
 }

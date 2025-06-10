@@ -5,11 +5,21 @@ import { Widget } from '../../interfaces/dashboard.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { WidgetOptionsComponent } from "../widget-options/widget-options.component";
+import { CdkDrag, CdkDragPlaceholder } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-widget',
   standalone: true,
-  imports: [CommonModule, MatCardModule, NgComponentOutlet, MatIconModule, MatButtonModule, WidgetOptionsComponent],
+  imports: [
+    CommonModule, 
+    MatCardModule, 
+    NgComponentOutlet, 
+    MatIconModule, 
+    MatButtonModule, 
+    WidgetOptionsComponent,
+    CdkDrag,
+    CdkDragPlaceholder
+  ],
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.scss'],
   host: {

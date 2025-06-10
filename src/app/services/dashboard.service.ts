@@ -104,7 +104,6 @@ export class DashboardService {
 
   moveWidgetToTheRight(id: number) {
     const idx = this.addedWidgets().findIndex(w => w.id === id);
-    console.log(idx);
     if (idx !== this.addedWidgets().length - 1) {
       const newWidgets = [...this.addedWidgets()];
       const widget = newWidgets[idx];
@@ -116,7 +115,6 @@ export class DashboardService {
 
   moveWidgetToTheLeft(id: number) {
     const idx = this.addedWidgets().findIndex(w => w.id === id);
-    console.log(idx);
     if (idx !== 0) {
       const newWidgets = [...this.addedWidgets()];
       const widget = newWidgets[idx];
@@ -128,5 +126,19 @@ export class DashboardService {
 
   removeWidget(id: number) {
     this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id));
+  }
+
+  updateWidgetPosition(sourceWidgetId: number, targetWidgetId: number) {
+    const sourceWidgetIdx = this.addedWidgets().findIndex(w => w.id === sourceWidgetId);
+    const targetWidgetIdx = this.addedWidgets().findIndex(w => w.id === targetWidgetId);
+    
+    if (sourceWidgetIdx !== -1 && targetWidgetIdx !== -1) {
+      const newWidgets = [...this.addedWidgets()];
+      const sourceWidget = newWidgets[sourceWidgetIdx];
+      const targetWidget = newWidgets[targetWidgetIdx];
+      newWidgets.splice(sourceWidgetIdx, 1);
+      newWidgets.splice(targetWidgetIdx, 0, sourceWidget);
+      this.addedWidgets.set(newWidgets);
+    }
   }
 }
